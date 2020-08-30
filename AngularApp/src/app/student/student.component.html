@@ -1,0 +1,125 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content white-text">
+        <div class="row">
+          <div class="col s5">
+            <form #studentForm="ngForm" (ngSubmit)="onSubmit(studentForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="studentService.selectedStudent._id">
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="enroll" #name="ngModel" [(ngModel)]="studentService.selectedStudent.enroll" placeholder="Eg : 1710DMBCSE01376">
+                  <label>Enrollment No. :</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="name" #name="ngModel" [(ngModel)]="studentService.selectedStudent.name" placeholder="Enter full name" required>
+                  <label>Name :
+                    <label class="red-text">*</label>
+                  </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="dept" #name="ngModel" [(ngModel)]="studentService.selectedStudent.dept" placeholder="Eg : CSE">
+                  <label>Department :</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="year_of_admission" #name="ngModel" [(ngModel)]="studentService.selectedStudent.year_of_admission" placeholder="Eg. 2017">
+                  <label>Year of Admission :</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="city" #name="ngModel" [(ngModel)]="studentService.selectedStudent.city" placeholder="Enter city name">
+                  <label>City :</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="gender" #name="ngModel" [(ngModel)]="studentService.selectedStudent.gender" placeholder="Enter gender">
+                  <label>Gender :</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="contact_no" #name="ngModel" [(ngModel)]="studentService.selectedStudent.contact_no" placeholder="Enter contact no.">
+                  <label>Contact No. :</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="email" #name="ngModel" [(ngModel)]="studentService.selectedStudent.email" placeholder="Enter email Id">
+                  <label>Email :</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="address" #name="ngModel" [(ngModel)]="studentService.selectedStudent.address" placeholder="Enter address">
+                  <label>Address :</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn btn-custom right" type="button" (click)="resetForm(studentForm)">Reset</button>
+                  <button class="btn btn-custom right" type="submit" [disabled]="!studentForm.valid">Submit Details</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="col s7">
+              <table class="responsive-table highlight">
+                  <thead>
+                    <tr>
+                      <th>Enrollment No.</th>
+                      <th>Name</th>
+                      <th>Department</th>
+                      <th>Year of Admission</th>
+                      <th>City</th>
+                      <th>Gender</th>
+                      <th>Contact No.</th>
+                      <th>Email</th>
+                      <th>Address</th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let st of studentService.students">
+                    <td>{{st.enroll}}</td>
+                    <td>{{st.name}}</td>
+                    <td>{{st.dept}}</td>
+                    <td>{{st.year_of_admission}}</td>
+                    <td>{{st.city}}</td>
+                    <td>{{st.gender}}</td>
+                    <td>{{st.contact_no}}</td>
+                    <td>{{st.email}}</td>
+                    <td>{{st.address}}</td>
+                    <td>
+                        <a class="action-btn" (click)="onEdit(st)">
+                          <i class="material-icons">edit</i>
+                        </a>
+                        <a class="action-btn" (click)="onDelete(st._id,studentForm)">
+                          <i class="material-icons">delete</i>
+                        </a>
+                      </td>
+                  </tr>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
